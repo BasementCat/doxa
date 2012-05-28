@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<?php global $_THEME; ?>
+<?php global $_THEME, $_CONFIG; ?>
 <!-- ==========================================================	-->
 <!--	Created by Devit Schizoper                          	-->
 <!--	Created HomePages http://LoadFoo.starzonewebhost.com   	-->
@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 		<meta name="author" content="LoadFoO" />
-		<title><?php echo $_THEME['Title']; ?></title>
+		<title><?php echo $_THEME['Title'], ' - ', $_CONFIG['SiteName']; ?></title>
 		<link rel="stylesheet" type="text/css" href="<?php echo dx_theme('css/style.css'); ?>" media="screen" />
 		<link rel="stylesheet" type="text/css" href="<?php echo dx_theme('css/addon.css'); ?>" media="screen" />
 	</head>
@@ -17,7 +17,7 @@
 	<body>
 		<div id="wrap">
 			<div id="top">
-				<h2><a href="<?php echo dx_link(dx_url()); ?>" title="<?php echo $_THEME['Title']; ?>"><?php echo $_THEME['Title']; ?></a></h2>
+				<h2><a href="<?php echo dx_link(''); ?>" title="<?php echo $_CONFIG['SiteName']; ?>"><?php echo $_CONFIG['SiteName']; ?></a></h2>
 				<div id="menu">
 					<ul>
 						<?php
@@ -42,6 +42,7 @@
 			</div>
 		<div id="content">
 			<div id="left">
+				<h1><?php echo $_THEME['Title']; ?></h1>
 				<div id="notecontainer">
 					<?php foreach(array('error', 'warning', 'info') as $notetype){
 						$notes=dx_note($notetype);

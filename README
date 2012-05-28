@@ -1,2 +1,9 @@
 A simple wiki for my own organizational needs.  Requires the Zydeco wikitext
 parser: https://github.com/BasementCat/zydeco
+
+To make it work with little to no modification, check out both Doxa and Zydeco
+to the same root directory, like so:
+
+parent
+|-doxa
+\-zydeco

@@ -1,0 +1,83 @@
+table{
+	width: 100%;
+}
+label{
+	display: inline-block;
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin: 0;
+	margin-bottom: 1em;
+}
+label>*{
+	width: 100%;
+}
+label>input[type="button"], label>input[type="cancel"], label>input[type="submit"]{
+	width: auto;
+}
+textarea{
+	height: 30em;
+	overflow: scroll;
+	white-space: nowrap;
+}
+div#left{ width: 100%; }
+
+/**
+		Notes
+**/
+div#notecontainer>div.notes{
+	border: 1px solid #000;
+	margin: 0.3em 0;
+	padding: 0;
+}
+div#notecontainer>div.notes>ul{
+	list-style-type: none;
+	list-style-image: none;
+	margin: 0;
+	padding: 0.2em 0.4em;
+}
+div#notecontainer>div.note_info{
+	border-color: #0a0;
+	background-color: #cfc;
+}
+div#notecontainer>div.note_warning{
+	border-color: #aa0;
+	background-color: #ffa;
+}
+div#notecontainer>div.note_error{
+	border-color: #f00;
+	background-color: #fcc;
+}
+
+/**
+		Source code tables
+*/
+table.source, table.source *{
+	background: #eee;
+	border-collapse: collapse;
+	padding: 0.27em;
+}
+table.source thead th{
+	border-bottom: 1px solid #444;
+	text-align: left;
+}
+table.source tbody tr:nth-child(even)>td{
+	background: #ddd;
+}
+table.source tbody td{
+	border-top: 1px solid #ddd;
+}
+table.source tbody td.lineno{
+	min-width: 3em;
+	text-align: right;
+	border-right: 1px solid #aaa;
+}
+table.source tbody td.line{
+	padding-left: 1em;
+}
+table.source tbody>tr>td.added{
+	background: #dfd;
+}
+table.source tbody>tr>td.removed{
+	background: #fdd;
+}

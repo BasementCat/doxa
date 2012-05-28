@@ -27,7 +27,7 @@
 	}
 
 	function dx_path(){
-		if(isset($_SERVER['PATH_INFO'])) return trim($_SERVER['PATH_INFO']);
+		if(isset($_SERVER['PATH_INFO'])) return trim($_SERVER['PATH_INFO'], '/');
 		return '';
 	}
 
@@ -54,7 +54,7 @@
 	}
 
 	function dx_url($idx=null){
-		$url=str_rtrim(dx_path(), URL_SUFFIX);
+		$url=dx_path();
 		if($idx!==null){
 			$url=explode('/', $url);
 			return $url[$idx];

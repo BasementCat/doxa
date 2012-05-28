@@ -16,6 +16,7 @@
 	include LIB_DIR.'stem.php';
 	include LIB_DIR.'search.php';
 	include LIB_DIR.'Page.php';
+	include LIB_DIR.'User.php';
 
 	$_CONFIG['Location']=
 		'http'.((isset($_SERVER['HTTPS'])&&$_SERVER['HTTPS']&&$_SERVER['HTTPS']!='off')?'s':'').'://'
@@ -24,6 +25,11 @@
 	$_CONFIG['CleanURLs']=false;
 	$_CONFIG['Theme']='default';
 	$_CONFIG['SiteName']='Doxa Test';
+	$_CONFIG['PasswordHashAlgorithm']='BCrypt';
+	$_CONFIG['PasswordHashRounds']=11; //leave null for default
+	$_CONFIG['UserPageURL']='users';
+
+	User::loadAll();
 
 	ob_start();
 	try{
@@ -64,3 +70,5 @@
 	include dx_theme('header.php', false);
 	echo $out;
 	include dx_theme('footer.php', false);
+
+	User::saveAll();

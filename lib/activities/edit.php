@@ -10,7 +10,12 @@
 	}else{
 		$page->Comment='';
 	}
-	$page->Editor='Anonymous ('.$_SERVER['REMOTE_ADDR'].')';
+	if($user=User::me()){
+		$page->Editor=$user->Username;
+	}else{
+		$page->Editor='Anonymous ('.$_SERVER['REMOTE_ADDR'].')';
+		dx_note('warning', "You are not logged in! Your changes will be attributed to %s", $page->Editor);
+	}
 	$_THEME['Title']='Edit Page: '.$page->Title;
 
 	if(isset($_POST['do'])){
@@ -52,6 +57,10 @@
 		<label for="Comment">
 			Comment
 			<input type="text" name="Comment" id="Comment" value="<?php echo $page->Comment; ?>" />
+		</label>
+		<label for="Editor">
+			Editor<br />
+			<a href="<?php echo dx_link(sprintf("%s/%s", $_CONFIG['UserPageURL'], $page->Editor)); ?>"><?php echo $page->Editor; ?></a>
 		</label>
 		<label>
 			Finish<br />

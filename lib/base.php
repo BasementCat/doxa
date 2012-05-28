@@ -63,6 +63,34 @@
 		}
 	}
 
+	function dx_breadcrumbs($page=null){
+		if($page===null){
+			$path=dx_path();
+		}else{
+			$path=trim(trim($page->Path, '/').'/'.$page->Filename, "/");
+		}
+		$path=explode("/", $path);
+		$out=array();
+		$out[]=array('Home', '/');
+		$curpath='';
+		foreach($path as $path_part){
+			$curpath.=$path_part.'/';
+			$out[]=array($path_part, $curpath);
+		}
+		return $out;
+	}
+
+	function dx_formatted_breadcrumbs($page=null){
+		$bc=dx_breadcrumbs($page);
+		$last=array_pop($bc);
+		$out=array();
+		foreach($bc as $bcd){
+			$out[]=sprintf('<a href="%s">%s</a>', dx_link($bcd[1]), $bcd[0]);
+		}
+		$out[]=$last[0];
+		return implode(" &raquo; ", $out);
+	}
+
 	function dx_page_type(){
 		$url=dx_url();
 		if(preg_match('#^special(/.*)$#', $url)) return 'special';

@@ -3,6 +3,8 @@
 	global $_THEME;
 	$_THEME['Title']=$page->Title;
 
+	echo dx_formatted_breadcrumbs($page), '<br />';
+
 	$parser=new ZydecoParser($page->Data);
 	$parser->HrefBase=dx_link('/');
 	$parser->parse();

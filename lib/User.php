@@ -57,6 +57,18 @@
 			return $out;
 		}
 
+		public static function byUsername($username, $case_sensitive=false){
+			foreach(self::$UCache as $user){
+				if(($case_sensitive&&$user->Username==$username)||(!$case_sensitive&&strtolower($user->Username)==strtolower($username)))
+					return $user;
+			}
+			return null;
+		}
+
+		public static function byID($id){
+			return isset(self::$UCache[$id])?self::$UCache[$id]:null;
+		}
+
 		public function __set($k, $v){
 			switch($k){
 				case 'ID':

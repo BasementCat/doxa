@@ -8,3 +8,11 @@
 		if(!endswith($str, $end)) return $str;
 		return substr($str, 0, strlen($str)-strlen($end));
 	}
+
+	function requestMethod(){
+		return strtoupper($_SERVER['REQUEST_METHOD']);
+	}
+
+	function reqIsPost(){
+		return requestMethod()=='POST';
+	}
